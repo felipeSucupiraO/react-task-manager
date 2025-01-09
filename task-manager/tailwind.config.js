@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         "aqua-green": "#3C6E71",
-        "dark-grey": "#353535",
+        "dark-gray": "#353535",
         "white": "#FFFFFF",
         "light-gray": "#D9D9D9",
         "royal-blue": "#284B63"

@@ -1,7 +1,13 @@
-function Tasks() {
+import TaskUnit from "./TaskUnit";
+
+function Tasks(props) {
     return (
-        <div>
-            <h2>Tasks</h2>
+        <div className="bg-light-gray p-6 rounded-2xl">
+            <ul className="space-y-4">
+                {props.tasks.map((task) => (
+                    <TaskUnit task={task}/>
+                ))}
+            </ul>
         </div>
     )
 }
