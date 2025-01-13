@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TaskAdder from "./components/TaskAdder";
 import Tasks from "./components/Tasks";
+import {v4} from "uuid";
 
 function App() {
     const [tasks, setTasks] = useState([
@@ -42,11 +43,24 @@ function App() {
         setTasks(newTasks);
     }
 
+    function addTask(taskTitle, taskDescription) {
+        const newTask = {
+            id: v4(),
+            title: taskTitle,
+            description: taskDescription,
+            isCompleted: false
+        };
+        console.log(newTask.id);
+        
+        setTasks([...tasks, newTask]);
+    }
+
+
     return (
-        <div className="w-screen h-screen bg-aqua-green flex justify-center p-6">
+        <div className="w-screen bg-aqua-green flex justify-center p-6">
             <div className="w-[500px]">
                 <h1 className="text-3xl text-white font-bold text-center">Task Manager</h1>
-                <TaskAdder/>
+                <TaskAdder addTask={addTask}/>
                 <Tasks 
                     tasks={tasks}
                     changeTaskCompletionOnId={changeTaskCompletionOnId}
