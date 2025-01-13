@@ -3,7 +3,7 @@ import TaskAdder from "./components/TaskAdder";
 import Tasks from "./components/Tasks";
 
 function App() {
-    const [tasks, addTask] = useState([
+    const [tasks, setTasks] = useState([
         {
             id: 1,
             title: "Study Programming",
@@ -24,12 +24,34 @@ function App() {
         }
     ])
     
+    function changeTaskCompletionOnId(taskId) {
+        const newTasks = tasks.map(task => {
+            if (task.id == taskId) {
+                return {...task, isCompleted: !task.isCompleted};
+            } else {
+                return task;
+            }
+        })
+
+        setTasks(newTasks);
+    }
+
+    function deleteTaskOnId(taskId) {
+        const newTasks = tasks.filter(task => task.id != taskId)
+
+        setTasks(newTasks);
+    }
+
     return (
         <div className="w-screen h-screen bg-aqua-green flex justify-center p-6">
             <div className="w-[500px]">
                 <h1 className="text-3xl text-white font-bold text-center">Task Manager</h1>
                 <TaskAdder/>
-                <Tasks tasks={tasks}/>
+                <Tasks 
+                    tasks={tasks}
+                    changeTaskCompletionOnId={changeTaskCompletionOnId}
+                    deleteTaskOnId={deleteTaskOnId}
+                />
             </div>
         </div>
     )
