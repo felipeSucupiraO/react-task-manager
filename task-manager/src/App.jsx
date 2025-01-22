@@ -46,16 +46,21 @@ function App() {
     return (
         <div className="w-screen min-h-screen bg-aqua-green flex justify-center p-6">
             <div className="w-[500px]">
-                <h1 className="text-3xl text-white font-bold text-center">Task Manager</h1>
-                <TaskAdder addTask={addTask}/>
-                
-                {tasks.length ? 
-                    <Tasks
-                        tasks={tasks}
-                        changeTaskCompletionOnId={changeTaskCompletionOnId}
-                        deleteTaskOnId={deleteTaskOnId}
-                    />
-                : ""}
+                <header>
+                    <h1 className="text-3xl text-white font-bold text-center">Task Manager</h1>
+                </header>
+                <main>
+
+                    <TaskAdder addTask={addTask}/>
+                    
+                    {tasks.length ? 
+                        <Tasks
+                            tasks={tasks}
+                            changeTaskCompletionOnId={changeTaskCompletionOnId}
+                            deleteTaskOnId={deleteTaskOnId}
+                        />
+                    : ""}
+                </main>
             </div>
         </div>
     )
