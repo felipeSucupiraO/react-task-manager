@@ -5,7 +5,7 @@ function TaskAdder(props) {
     const [description, setDescription] = useState("");
     
     return (
-        <div className="bg-light-gray p-6 rounded-2xl my-3 flex flex-col gap-4">
+        <section className="bg-light-gray p-6 rounded-2xl my-3 flex flex-col gap-4">
             <input
                 className="border border-dark-gray p-4 rounded-lg"
                 type="text"
@@ -34,7 +34,7 @@ function TaskAdder(props) {
                 setTitle("");
                 setDescription("");
             }} className="bg-dark-gray p-4 text-white rounded-lg">Add</button>
-        </div>
+        </section>
     )
 }
 

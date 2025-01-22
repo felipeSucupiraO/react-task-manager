@@ -28,7 +28,9 @@ function TaskUnit(props) {
             <button 
                 className="flex-none bg-dark-gray p-3 text-white rounded-lg"
                 onClick={() => {props.deleteTaskOnId(task.id)}}
-            ><Trash2 size={20} /></button>
+            >
+                <Trash2 size={20} />
+            </button>
         </li>
     )
 }
