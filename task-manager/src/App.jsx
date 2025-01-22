@@ -1,29 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskAdder from "./components/TaskAdder";
 import Tasks from "./components/Tasks";
 import {v4} from "uuid";
 
 function App() {
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            title: "Study Programming",
-            description: "Learn react and start a small project",
-            isCompleted: false
-        },
-        {
-            id: 2,
-            title: "Do exercises",
-            description: "Make codeforces exercises for the contests",
-            isCompleted: false
-        },
-        {
-            id: 3,
-            title: "Organize Linkedin",
-            description: "Organize linkedin's about, skills, publications, etc",
-            isCompleted: false
-        }
-    ])
+    const [tasks, setTasks] = useState(
+        JSON.parse(localStorage.getItem("tasks")) || []
+    );
     
     function changeTaskCompletionOnId(taskId) {
         const newTasks = tasks.map(task => {
@@ -55,17 +38,24 @@ function App() {
         setTasks([...tasks, newTask]);
     }
 
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        console.log(`changed tasks, new tasks: ${JSON.stringify(tasks)}`);
+    }, [tasks])
 
     return (
         <div className="w-screen min-h-screen bg-aqua-green flex justify-center p-6">
             <div className="w-[500px]">
                 <h1 className="text-3xl text-white font-bold text-center">Task Manager</h1>
                 <TaskAdder addTask={addTask}/>
-                <Tasks 
-                    tasks={tasks}
-                    changeTaskCompletionOnId={changeTaskCompletionOnId}
-                    deleteTaskOnId={deleteTaskOnId}
-                />
+                
+                {tasks.length ? 
+                    <Tasks
+                        tasks={tasks}
+                        changeTaskCompletionOnId={changeTaskCompletionOnId}
+                        deleteTaskOnId={deleteTaskOnId}
+                    />
+                : ""}
             </div>
         </div>
     )
