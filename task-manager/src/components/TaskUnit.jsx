@@ -1,4 +1,4 @@
-import { Trash2, MoveRight } from "lucide-react"
+import { Trash2, MoveRight, Check } from "lucide-react"
 import { useNavigate } from "react-router"
 
 function TaskUnit(props) {
@@ -14,8 +14,9 @@ function TaskUnit(props) {
         <li key={task.id} className="flex flex-row gap-2">
             <button
                 onClick={() => {props.changeTaskCompletionOnId(task.id)}}
-                className={`flex-1 bg-dark-gray p-4 text-white text-left rounded-lg ${task.isCompleted ? "line-through" : ""}`}
+                className={"flex-1 flex flex-row gap-2 bg-dark-gray p-4 text-white text-left rounded-lg"}
             >
+                {task.isCompleted ? <Check /> : ""}
                 {task.title}
             </button>
             <button 
