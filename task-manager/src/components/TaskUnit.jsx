@@ -1,5 +1,4 @@
-import { Trash2 } from "lucide-react"
-import { MoveRight } from "lucide-react"
+import { Trash2, MoveRight } from "lucide-react"
 import { useNavigate } from "react-router"
 
 function TaskUnit(props) {
